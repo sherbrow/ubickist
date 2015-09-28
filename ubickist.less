@@ -1,0 +1,316 @@
+/*
+Transitions should be set on possibly "high-perf" devices only, but also should be forbidden on smaller screen sizes (size transition are more sensitive when space is sparce)
+*/
+/* http://www.colorhunt.co/#686ee25c3e84f35c6effa87b */
+@action-color: mix(#686EE2, white, 30);
+@border-color: #5C3E84;
+@accent-color: mix(#F35C6E, white, 90);
+@main-color: mix(#FFA87B, white, 70);
+@fade-color: #FDFDFD;
+html {
+    background: #FDFDFD;
+    background: linear-gradient(135deg, @main-color 0%, mix(@main-color, @fade-color, 20) 15rem, @fade-color 100%);
+    min-height: 100%;
+}
+body {
+    min-width: 200px;
+    font-family: 'Noto Sans', sans-serif;
+}
+header {
+    position: relative;
+}
+header{
+    background: #FFF;
+    background: hsla(0,0%,100%,0.5);
+}
+.menu-pages,
+#menu menu {
+    background: #FFF;
+    background: hsla(0,0%,100%,0.9);
+}
+#menu,
+#menu menu {
+    margin: 0;
+    padding: 0;
+}
+#menu.row .brand {
+   align-self: center;
+}
+#menu {
+    border-style: solid;
+    border-color: @accent-color;
+    border-width: 1px 0;
+}
+.menu-container {
+    position: relative;
+}
+/* Temp menu css */
+.menu-container menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in;
+}
+.menu-container:hover menu {
+    max-height: 10em;
+}
+/* /Temp menu css */
+#menu menu {
+    position: absolute;
+    z-index: 30;
+    left: 0;
+    top: 100%;
+    width: auto;
+    white-space: nowrap;
+    border-style: solid;
+    border-color: @accent-color;
+    border-width: 0 1px 1px;
+}
+#menu menu {
+    position: absolute;
+    z-index: 30;
+    left: 0;
+    top: 100%;
+    width: auto;
+    white-space: nowrap;
+    border-style: solid;
+    border-color: @accent-color;
+    border-width: 0 1px 1px;
+}
+#menu .menu-item {
+    margin: 0;
+    border: none;
+    background: transparent;
+    background: linear-gradient(to top, @accent-color 0px, transparent 3px) no-repeat, linear-gradient(to bottom, @accent-color 0px, transparent 3px) no-repeat;
+    background-position: bottom left,top left;
+    background-size: 100% 0px;
+    padding: 1px 1ex;
+    transition: background-size 0.1s ease-out;
+}
+#menu menu .menu-item {
+    text-align: left;
+}
+#menu button:hover,
+#menu button:focus,
+#menu button:active {
+    background-size: 100% 0px, 100% 3px;
+}
+#menu button.active {
+    background-size: 100% 3px, 100% 0px;
+}
+#menu button.active:hover,
+#menu button.active:focus,
+#menu button.active:active {
+    background-size: 100% 3px, 100% 3px;
+}
+.menu-pages {
+    position: absolute;
+    z-index: 20;
+    left: 0;
+    right: 0;
+    top: 100%;
+}
+.menu-pages .menu-page a {
+    display: block;
+    padding: 0 1ex;
+    margin-left: 1ex;
+    text-decoration: none;
+    color: inherit;
+    background: linear-gradient(to right, hsla(0,50%,0%,0.2) 0px, transparent 1ex) no-repeat;
+    background-size: 1px 100%;
+    transition: background-size 0.1s ease-out;
+}
+.menu-pages .menu-page a:hover,
+.menu-pages .menu-page a:focus,
+.menu-pages .menu-page a:active {
+    /* text-decoration: underline; */
+    background-size: 1ex 100%;
+}
+.brand,
+section h1 {
+    font-family: Orbitron, serif;
+}
+.list {
+    background: #FFF;
+    background: hsla(0,0%,100%,0.5);
+    border: 1px solid @border-color;
+    border-color: fade(@border-color, 50%);
+    border-radius: 2px;
+    margin: 1ex;
+    padding: 10px; /* list-padding */
+    box-sizing: border-box;
+    box-shadow: 2px 2px 9px hsla(0,0%,50%,0.2);
+    
+    font-size: 1.2em;
+}
+.list .title {
+    text-align: left;
+    margin: 0;
+    padding: 0 1ex;
+}
+.list .title,
+.list .title-style {
+    font-family: 'Roboto', sans-serif;
+}
+.list .title-row + hr {
+    border: none;
+    border-bottom: 1px solid @border-color;
+    border-color: fade(@border-color, 50%);
+    margin-left: -10px; /* -list-padding */
+    margin-right: -10px; /* -list-padding */
+}
+ul.row {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.item {
+   margin: 0px;
+   padding: 3px;
+}
+.item-row .item {
+   border-radius: 2px;
+   cursor: pointer;
+   transition: background ease-out 0.1s;
+}
+.item-row:hover .item {
+   background: #FFF;
+   background: fade(@action-color, 40%);
+}
+.item.row {
+   align-items: baseline;
+}
+.item [type="checkbox"] {
+    transform: scale(1.3); /* lol */
+    margin-right: 1ex;
+}
+
+
+.title-row .list-editing,
+.item-row .item-editing {
+    width: 0;
+    flex-grow: 0;
+    overflow: hidden;
+    transition: width 0.2s ease-out;
+}
+.title-row.editing .list-editing,
+.item-row.editing .item-editing {
+    width: auto;
+    flex-grow: 1;
+}
+.title-row.editing .title,
+.item-row.editing .item {
+    width: 0;
+    padding: 0;
+    flex-grow: 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.title-row.editing .list-btn,
+.item-row.editing .item-btn {
+    width: 0;
+    flex-grow: 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.list-create.notcreating,
+.item-add.notadding {
+    opacity: 0.5;
+}
+.item-create,
+.list-create.notcreating:hover,
+.item-add,
+.item-add.notadding:hover {
+    opacity: 1;
+    transition: opacity ease-out 0.1s;
+}
+.list-editing input[type="text"],
+.list-create input[type="text"],
+.list-create.notcreating input[type="text"],
+.item-editing input[type="text"],
+.item-add input[type="text"],
+.item-add.notadding input[type="text"] {
+    background: transparent;
+    border: 1px solid @border-color;
+    border-color: fade(@border-color, 50%);
+    border-radius: 2px 0 0 2px;
+    padding: 0ex 1ex;
+    transition: padding 0.1s ease-out, background 0.1s ease-out;
+}
+.list-editing input[type="text"]:focus,
+.list-editing.editing input[type="text"]:focus,
+.list-create input[type="text"],
+.list-create input[type="text"]:focus,
+.list-create.notcreating input[type="text"]:focus,
+.item-editing input[type="text"]:focus,
+.item-editing.editing input[type="text"]:focus,
+.item-add input[type="text"],
+.item-add input[type="text"]:focus,
+.item-add.notadding input[type="text"]:focus {
+    background: hsla(0,50%,100%,0.2);
+    padding: 1ex 2ex;
+}
+.list button {
+    padding-left: 1ex;
+    padding-right: 1ex;
+    background: @action-color;
+    border: 1px solid @border-color;
+    border-color: fade(@border-color, 50%);
+    border-radius: 0 2px 2px 0;
+    transition: padding 0.1s ease-out, background 0.1s ease-out, background 0.1s ease-out;
+    text-transform: uppercase;
+}
+.list button:hover,
+.list button:focus {
+    background: @action-color;
+    padding-left: 2ex;
+    padding-right: 2ex;
+}
+.list button:active {
+    color: white;
+    border-color: hsla(0,50%,100%,0.2);
+}
+.list .list-btn button,
+.list .item-btn button {
+  opacity: 0.1;
+}
+.list .title-row:hover .list-btn button,
+.list .list-btn button:focus,
+.list .list-btn button:active,
+.list .item-row:hover .item-btn button,
+.list .item-btn button:focus,
+.list .item-btn button:active {
+  opacity: 1;
+}
+.list.list-create button,
+.list .item-add button {
+    padding-left: 2ex;
+    padding-right: 2ex;
+    border-left: none;
+    text-transform: uppercase;
+}
+.list.list-create button:hover,
+.list.list-create button:focus,
+.list .item-add button:hover,
+.list .item-add button:focus {
+    padding-left: 5ex;
+    padding-right: 5ex;
+}
+
+input[type="text"] {
+  max-width: 100%;
+  width: 0;
+  box-sizing: border-box;
+}
+input[type="text"].col {
+  width: 0;
+}
+
+.draghandle {
+    cursor: row-resize;
+    cursor: -webkit-grab;
+    cursor: grab;
+}
+
+.row{display:-webkit-flex;-webkit-flex-wrap:nowrap;display:flex;flex-wrap:nowrap}.col{-webkit-flex-grow:1;flex-grow:1}.row.vertical{-webkit-flex-direction:column;flex-direction:column;}.row.wrap{-webkit-flex-wrap:wrap;flex-wrap:wrap}

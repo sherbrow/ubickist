@@ -1,0 +1,19 @@
+CACHE MANIFEST
+
+# v0.0.0a
+
+ubickist.js
+ubickist.css
+dragula.min.css
+dragula.min.js
+# knockout-min.js
+# bean.min.js
+# normalize.min.css
+https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js
+https://cdnjs.cloudflare.com/ajax/libs/bean/1.0.15/bean.min.js
+https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css
+# http://www.sherbrow.fr/cdn/dragula/dragula.min.css
+# http://www.sherbrow.fr/cdn/dragula/dragula.min.js
+
+
+https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js
